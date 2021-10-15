@@ -10,7 +10,8 @@ namespace WebAppCore.Data.Entities
     [Table("AdvertistmentPositions")]
     public class AdvertistmentPosition : DomainEntity<string>
     {
-        [StringLength(20)]
+        [StringLength(128)]
+        [Required]
         public string PageId { get; set; }
 
         [StringLength(250)]

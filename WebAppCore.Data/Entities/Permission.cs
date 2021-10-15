@@ -10,12 +10,12 @@ namespace WebAppCore.Data.Entities
     [Table("Permissions")]
     public class Permission : DomainEntity<int>
     {
-        [StringLength(450)]
-        [Required]
-        public string RoleId { get; set; }
 
-        [StringLength(128)]
         [Required]
+        public Guid RoleId { get; set; }
+
+        [Required]
+        [Column(TypeName = "varchar(128)")]
         public string FunctionId { get; set; }
 
         public bool CanCreate { set; get; }

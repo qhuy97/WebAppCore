@@ -5,14 +5,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using WebAppCore.Data.Enums;
-using WebAppCore.Data.Interfaces;
-using WebAppCore.Infrastructure.SharedKernel;
 
-namespace WebAppCore.Data.Entities
+namespace WebAppCore.Application.ViewModels.Product
 {
-    [Table("Products")]
-    public class Product : DomainEntity<int>, ISwitchable, IDateTracking, IHasSeoMetaData
+    public class ProductViewModel
     {
+        public int Id { get; set; }
         [StringLength(500)]
         [Required]
         public string Name { get; set; }
@@ -29,7 +27,7 @@ namespace WebAppCore.Data.Entities
         [Required]
         public decimal OriginalPrice { get; set; }
 
-  
+
         public string Description { get; set; }
 
         public string Content { get; set; }
@@ -44,22 +42,21 @@ namespace WebAppCore.Data.Entities
 
         public string Unit { get; set; }
 
-        [ForeignKey("CategoryId")]
-        public virtual ProductCategory ProductCategory { set; get; }
+        public ProductCategoryViewModel ProductCategory { set; get; }
 
-        public Status Status  { set; get; }
+        public Status Status { set; get; }
 
-        public DateTime DateCreated  { set; get; }
-        public DateTime DateModified  { set; get; }
+        public DateTime DateCreated { set; get; }
+        public DateTime DateModified { set; get; }
 
         [StringLength(255)]
-        public string SeoPageTitle  { set; get; }
-        [Column(TypeName ="varchar(500)")]
+        public string SeoPageTitle { set; get; }
+
         [StringLength(500)]
-        public string SeoAlias  { set; get; }
+        public string SeoAlias { set; get; }
         [StringLength(255)]
-        public string SeoKeywords  { set; get; }
+        public string SeoKeywords { set; get; }
         [StringLength(255)]
-        public string SeoDescription  { set; get; }
+        public string SeoDescription { set; get; }
     }
 }
